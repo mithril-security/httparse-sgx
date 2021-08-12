@@ -20,8 +20,11 @@
 //! If compiling for a specific target, remembering to include
 //! `-C target_cpu=native` allows the detection to become compile time checks,
 //! making it *even* faster.
-#[cfg(feature = "std")]
+#[cfg(all(feature = "std", not(target_env = "sgx")))]
 extern crate std as core;
+
+#[cfg(all(feature = "std", target_env = "sgx"))]
+extern crate core;
 
 use core::{fmt, result, str};
 use core::mem::{self, MaybeUninit};
