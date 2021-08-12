@@ -1,0 +1,25 @@
+cargo-features = ["resolver"]
+[package]
+name = "template"
+version = "1.0.0"
+edition = "2018"
+authors = ["htmai-880"]
+resolver = "2"
+[lib]
+name = "sample" # Library name. If you change this, please reflect those changes in the Makefile on the variable ENCLAVE_CARGO_LIB
+crate-type = ["staticlib"] 
+[features]
+default = ["std"]
+
+std = []
+
+[dependencies]
+httparse = { path = "../../../" }
+
+[patch.crates-io]
+
+
+
+
+
+
